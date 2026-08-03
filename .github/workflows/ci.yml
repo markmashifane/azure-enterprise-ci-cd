@@ -10,6 +10,7 @@ on:
       - main
 
 jobs:
+
   validate:
 
     name: Validate Repository
@@ -23,15 +24,25 @@ jobs:
 
       - name: Display Runner Information
         run: |
-          echo "Running on:"
           uname -a
 
-      - name: Display Repository Information
+      - name: Install Azure CLI
         run: |
-          echo "Repository: ${{ github.repository }}"
-          echo "Branch: ${{ github.ref_name }}"
-          echo "Commit: ${{ github.sha }}"
+          curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 
-      - name: Verify Repository Structure
+      - name: Verify Azure CLI
         run: |
-          ls -la
+          az --version
+
+      - name: Install Bicep
+        run: |
+          az bicep install
+
+      - name: Verify Bicep
+        run: |
+          az bicep version
+
+      - name: Run PowerShell Validation
+        shell: pwsh
+        run: |
+          ./scripts/validate.ps1
