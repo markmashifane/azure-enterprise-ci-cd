@@ -9,11 +9,13 @@ on:
     branches:
       - main
 
-jobs:
+permissions:
+  contents: read
 
+jobs:
   validate:
 
-    name: Validate Repository
+    name: Repository Validation
 
     runs-on: ubuntu-latest
 
@@ -24,25 +26,35 @@ jobs:
 
       - name: Display Runner Information
         run: |
+          echo "Runner OS:"
           uname -a
+
+      - name: Display GitHub Context
+        run: |
+          echo "Repository: ${{ github.repository }}"
+          echo "Branch: ${{ github.ref_name }}"
+          echo "Commit SHA: ${{ github.sha }}"
+          echo "Actor: ${{ github.actor }}"
 
       - name: Install Azure CLI
         run: |
           curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 
       - name: Verify Azure CLI
-        run: |
-          az --version
+        run: az --version
 
       - name: Install Bicep
-        run: |
-          az bicep install
+        run: az bicep install
 
       - name: Verify Bicep
-        run: |
-          az bicep version
+        run: az bicep version
 
       - name: Run PowerShell Validation
         shell: pwsh
-        run: |
-          ./scripts/validate.ps1
+        run: ./scripts/validate.ps1
+
+      - name: Upload Repository Files
+        uses: actions/upload-artifact@v4
+        with:
+          name: repository-files
+          path: .
