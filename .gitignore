@@ -1,0 +1,63 @@
+# -----------------------------
+# Azure Enterprise CI/CD
+# -----------------------------
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# VS Code
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# Logs
+*.log
+logs/
+
+# PowerShell
+*.ps1xml
+
+# Azure CLI
+.azure/
+
+# Bicep build output
+*.bicepconfig.json
+
+# Terraform (future-proofing)
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+
+# Secrets
+*.env
+.env
+*.pem
+*.key
+*.pfx
+*.cer
+*.pub
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Node (future GitHub Actions)
+node_modules/
+
+# Python (future scripts)
+__pycache__/
+*.pyc
+
+# Build artifacts
+dist/
+build/
+out/
+
+# Archive files
+*.zip
+*.tar
+*.gz
