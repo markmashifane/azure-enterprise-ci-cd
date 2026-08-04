@@ -1,176 +1,216 @@
-# 🚀 Azure Enterprise CI/CD
+<p align="center">
+  <img src="./banner.png" alt="Azure Enterprise CI/CD Banner" width="100%">
+</p>
 
-> Enterprise GitHub Actions CI/CD pipeline for Azure Infrastructure as Code using Bicep, PowerShell, and DevOps best practices.
+# ☁️ Azure Enterprise CI/CD
 
----
-
-## 📌 Project Overview
-
-This project demonstrates how modern cloud engineering teams automate the validation and deployment of Azure Infrastructure as Code using GitHub Actions.
-
-The solution follows enterprise DevOps practices by validating infrastructure before deployment, reducing manual effort, improving consistency, and minimizing deployment errors.
-
-Rather than deploying infrastructure manually, every change pushed to the repository is automatically validated through a CI/CD pipeline.
-
----
-
-## 🏢 Business Scenario
-
-An organization manages its Microsoft Azure infrastructure using Azure Bicep templates.
-
-To improve reliability and reduce deployment failures, all infrastructure changes must pass automated validation before being approved for deployment.
-
-This repository simulates that enterprise workflow using GitHub Actions.
+![CI Pipeline](https://github.com/markmashifane/azure-enterprise-ci-cd/actions/workflows/ci.yml/badge.svg)
+![Pull Request Validation](https://github.com/markmashifane/azure-enterprise-ci-cd/actions/workflows/pull-request.yml/badge.svg)
+![CodeQL](https://github.com/markmashifane/azure-enterprise-ci-cd/actions/workflows/codeql.yml/badge.svg)
+![License](https://img.shields.io/badge/License-MIT-green.svg)
+![Azure](https://img.shields.io/badge/Microsoft-Azure-0078D4?logo=microsoftazure&logoColor=white)
+![PowerShell](https://img.shields.io/badge/PowerShell-5391FE?logo=powershell&logoColor=white)
+![Bicep](https://img.shields.io/badge/Bicep-0078D7?logo=microsoftazure&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub-Actions-2088FF?logo=githubactions&logoColor=white)
 
 ---
 
-# 🏗️ Solution Architecture
+## 🚀 Overview
+
+This project demonstrates the implementation of an enterprise-style CI/CD pipeline using GitHub Actions, Azure CLI, PowerShell and Bicep.
+
+The repository follows DevOps best practices including automated validation, Infrastructure as Code validation, security scanning, protected branches and continuous integration.
+
+This project is part of my Azure Cloud Engineering portfolio.
+
+---
+
+# 📌 Project Goals
+
+- Build an enterprise GitHub Actions pipeline
+- Validate Infrastructure as Code
+- Automate repository validation
+- Implement security scanning
+- Follow enterprise Git workflow
+- Prepare for automated Azure deployments
+
+---
+
+# 🏗 Current Features
+
+## ✅ Continuous Integration
+
+- Enterprise GitHub Actions Pipeline
+- Repository Validation
+- PowerShell Validation
+- Azure CLI Validation
+- Bicep Validation
+- Artifact Uploads
+
+---
+
+## ✅ Pull Request Validation
+
+Every Pull Request is automatically validated before it can be merged.
+
+Checks include:
+
+- Repository Structure
+- Azure CLI
+- Bicep
+- PowerShell
+- Workflow Validation
+
+---
+
+## ✅ Security
+
+- GitHub CodeQL Security Analysis
+- Protected Main Branch
+- Required Status Checks
+- Pull Request Validation
+
+---
+
+# 🛠 Technologies
+
+- Microsoft Azure
+- Azure CLI
+- GitHub Actions
+- PowerShell 7
+- Bicep
+- YAML
+- Git
+- GitHub
+- Infrastructure as Code (IaC)
+- CI/CD
+
+---
+
+# 📂 Repository Structure
 
 ```
-Developer
-
-      │
-      ▼
-
- GitHub Repository
-
-      │
-      ▼
-
- GitHub Actions
-
- ├── Checkout Repository
- ├── Validate Bicep
- ├── Run PowerShell Scripts
- ├── Lint Templates
- ├── Generate Artifacts
- └── Ready for Azure Deployment
-
-      │
-      ▼
-
- Microsoft Azure
-```
-
----
-
-# ⚙️ CI/CD Pipeline
-
-The GitHub Actions workflow performs:
-
-- Repository checkout
-- Azure Bicep validation
-- PowerShell validation
-- Infrastructure linting
-- Artifact generation
-- Pull Request validation
-- Release workflow preparation
-
----
-
-# 📁 Repository Structure
-
-```text
 azure-enterprise-ci-cd
 │
 ├── .github
 │   └── workflows
 │       ├── ci.yml
 │       ├── pull-request.yml
-│       └── release.yml
+│       └── codeql.yml
 │
-├── architecture
 ├── bicep
-├── docs
+│   └── storage-account.bicep
+│
 ├── scripts
-├── screenshots
-├── .vscode
+│   ├── validate.ps1
+│   └── lint.ps1
 │
 ├── README.md
-├── CHANGELOG.md
-├── CONTRIBUTING.md
 ├── LICENSE
-└── .gitignore
+├── CHANGELOG.md
+└── CONTRIBUTING.md
 ```
 
 ---
 
-# 🛠️ Technologies Used
+# 🔄 CI/CD Pipeline
 
-- Microsoft Azure
-- Azure Bicep
-- GitHub Actions
-- Git
-- GitHub
-- PowerShell 7
-- Azure CLI
-- YAML
-- Infrastructure as Code (IaC)
+```
+Developer
+      │
+      ▼
+GitHub Repository
+      │
+      ▼
+GitHub Actions
+      │
+ ┌───────────────┐
+ │ Repository CI │
+ │ PR Validation │
+ │ CodeQL Scan   │
+ └───────────────┘
+      │
+      ▼
+Artifacts
+      │
+      ▼
+Azure Deployment
+(Coming Soon)
+```
 
 ---
 
-# 🎯 Skills Demonstrated
+# 📍 Roadmap
 
-- CI/CD Pipelines
+## Completed
+
+- ✅ Enterprise CI Pipeline
+- ✅ Pull Request Validation
+- ✅ CodeQL Security Analysis
+- ✅ Azure CLI Validation
+- ✅ Bicep Validation
+- ✅ PowerShell Validation
+- ✅ Artifact Upload
+- ✅ Protected Main Branch
+
+## In Progress
+
+- 🔄 Release Pipeline
+- 🔄 Infrastructure Testing
+- 🔄 Azure Deployment
+- 🔄 Automated Releases
+
+## Planned
+
+- Azure Login (OIDC)
+- Bicep Deployment
+- Azure Key Vault
+- AKS Deployment
+- Azure Monitor
+- Log Analytics
+- Deployment Approvals
+- Multi-Environment Deployments
+
+---
+
+# 📈 Skills Demonstrated
+
+- Azure Administration
+- GitHub Actions
+- CI/CD
 - Infrastructure as Code
-- Azure Automation
-- GitHub Actions
-- Azure Bicep
 - Azure CLI
-- PowerShell Automation
-- Version Control
-- YAML Pipelines
-- DevOps Best Practices
+- PowerShell
+- Bicep
+- Git Workflow
+- Branch Protection
+- Code Quality
+- Security Automation
 
 ---
 
-# 📸 Screenshots
+# 🎯 Purpose
 
-Project screenshots will be added during implementation.
+This repository was built to demonstrate practical Azure Cloud Engineering and DevOps skills beyond certification knowledge.
 
----
-
-# 🗺️ Project Roadmap
-
-- [x] Repository initialization
-- [x] Professional Git structure
-- [ ] Enterprise README
-- [ ] GitHub Actions CI workflow
-- [ ] Pull Request validation
-- [ ] Release pipeline
-- [ ] PowerShell validation
-- [ ] Azure Bicep validation
-- [ ] Documentation
-- [ ] Architecture diagrams
-- [ ] Final project screenshots
+It showcases real-world automation practices commonly used in enterprise environments.
 
 ---
 
-# 🚀 Future Enhancements
-
-- Azure deployment stage
-- Environment approvals
-- Azure Key Vault integration
-- Azure DevOps integration
-- Terraform pipeline
-- Docker image validation
-- Kubernetes deployment
-- Security scanning
-- Automated testing
-
----
-
-# 📄 License
-
-Licensed under the MIT License.
-
----
-
-## 👨‍💻 Author
+# 👨‍💻 Author
 
 **Mark Mashifane**
 
-Cloud Engineer | Microsoft Azure Administrator (AZ-104)
+Azure Administrator (AZ-104)
 
-GitHub: https://github.com/markmashifane
-Testing Pull Request Workflow
+Azure Fundamentals (AZ-900)
+
+GitHub
+
+https://github.com/markmashifane
+
+---
+
+# 📜 License
+
+Licensed under the MIT License.
