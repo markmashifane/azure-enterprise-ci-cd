@@ -62,4 +62,8 @@ jobs:
         with:
           generate_release_notes: true
           files: |
-            release/**
+            files: |
+              release/README.md
+              release/LICENSE
+              release/CHANGELOG.md
+              release/CONTRIBUTING.md
