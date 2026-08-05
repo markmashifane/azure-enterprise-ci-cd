@@ -9,13 +9,15 @@ on:
     branches:
       - main
 
+  workflow_dispatch:
+
 permissions:
   contents: read
 
 jobs:
   validate:
 
-    name: Repository Validation
+    name: Validate Repository
 
     runs-on: ubuntu-latest
 
@@ -23,18 +25,6 @@ jobs:
 
       - name: Checkout Repository
         uses: actions/checkout@v4
-
-      - name: Display Runner Information
-        run: |
-          echo "Runner OS:"
-          uname -a
-
-      - name: Display GitHub Context
-        run: |
-          echo "Repository: ${{ github.repository }}"
-          echo "Branch: ${{ github.ref_name }}"
-          echo "Commit SHA: ${{ github.sha }}"
-          echo "Actor: ${{ github.actor }}"
 
       - name: Install Azure CLI
         run: |
@@ -49,12 +39,31 @@ jobs:
       - name: Verify Bicep
         run: az bicep version
 
-      - name: Run PowerShell Validation
+      - name: Validate PowerShell
         shell: pwsh
-        run: ./scripts/validate.ps1
+        run: |
+          ./scripts/validate.ps1
 
-      - name: Upload Repository Files
+      - name: Verify Repository Structure
+        run: |
+          test -f README.md
+          test -f LICENSE
+          test -f CHANGELOG.md
+          test -f CONTRIBUTING.md
+          test -d .github
+          test -d scripts
+
+      - name: Upload Project Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: repository-files
-          path: .
+          name: azure-enterprise-ci-cd
+          path: |
+            README.md
+            CHANGELOG.md
+            CONTRIBUTING.md
+            LICENSE
+            scripts/
+            .github/workflows/
+
+      - name: Pipeline Completed
+        run: echo "Enterprise CI Pipeline completed successfully."

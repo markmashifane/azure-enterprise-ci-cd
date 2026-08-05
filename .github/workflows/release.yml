@@ -1,0 +1,66 @@
+name: Release Pipeline
+
+on:
+  push:
+    tags:
+      - "v*"
+
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Build Release
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install Azure CLI
+        run: |
+          curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+
+      - name: Verify Azure CLI
+        run: az --version
+
+      - name: Install Bicep
+        run: az bicep install
+
+      - name: Verify Bicep
+        run: az bicep version
+
+      - name: Validate PowerShell
+        shell: pwsh
+        run: |
+          ./scripts/validate.ps1
+
+      - name: Create Release Package
+        run: |
+          mkdir release
+          cp README.md release/
+          cp CHANGELOG.md release/
+          cp CONTRIBUTING.md release/
+          cp LICENSE release/
+          cp -r scripts release/
+          cp -r .github release/
+
+      - name: Upload Release Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: azure-enterprise-release
+          path: release/
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          generate_release_notes: true
+          files: |
+            release/README.md
+            release/LICENSE
+            release/CHANGELOG.md
+            release/CONTRIBUTING.md
