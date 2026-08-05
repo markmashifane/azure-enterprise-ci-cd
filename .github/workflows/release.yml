@@ -3,7 +3,7 @@ name: Release Pipeline
 on:
   push:
     tags:
-      - 'v*'
+      - "v*"
 
   workflow_dispatch:
 
@@ -12,13 +12,11 @@ permissions:
 
 jobs:
   release:
-
     name: Build Release
 
     runs-on: ubuntu-latest
 
     steps:
-
       - name: Checkout Repository
         uses: actions/checkout@v4
 
@@ -62,8 +60,7 @@ jobs:
         with:
           generate_release_notes: true
           files: |
-            files: |
-              release/README.md
-              release/LICENSE
-              release/CHANGELOG.md
-              release/CONTRIBUTING.md
+            release/README.md
+            release/LICENSE
+            release/CHANGELOG.md
+            release/CONTRIBUTING.md
